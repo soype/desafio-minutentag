@@ -19,10 +19,13 @@ const listProduct = (products) => {
     itemMenu.classList = "item-menu";
     const itemPrice = document.createElement("div");
     itemPrice.classList = "item-price";
+    const addButton = document.createElement("div");
+    addButton.classList = "add-button";
+    addButton.textContent = "+"
 
 
     // Changing data
-    
+
     // Look up the price. We will only display the first option in the home page
     // We simulate the functionality of consuming an API here
     const getPrice = async (sku) => {
@@ -48,11 +51,14 @@ const listProduct = (products) => {
     // This function will work provided there is an API to consume.
     // We would use it like this:
     // itemPrice.textContent = getPrice(products[i].skus[0].code);
-    itemPrice.textContent = stockPrice[products[i].skus[0].code].price
+    // Format the price
+    let price = (stockPrice[products[i].skus[0].code].price / 100).toFixed(2);
+    itemPrice.textContent = '$ ' + price;
     
 
     // Item menu
     itemMenu.appendChild(itemPrice);
+    itemMenu.appendChild(addButton);
 
     // Item image
     imgContainer.appendChild(img);
@@ -60,6 +66,7 @@ const listProduct = (products) => {
     // Bringing the item together
     div.appendChild(itemTitle);
     div.appendChild(imgContainer);
+    div.appendChild(itemMenu);
 
 
     // Insert the item in the list
