@@ -1,6 +1,23 @@
 import products from "./products.js";
 import stockPrice from "./stock-price.js";
 
+
+// Category button animation
+const categoryButtons = document.querySelectorAll('.category-button');
+
+// Add an event listener to each
+categoryButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Remove background color from all
+    categoryButtons.forEach(btn => {
+      btn.classList = "category-button"
+    });
+
+    // Set background color for the clicked button
+    button.classList.add("category-button-selected"); 
+  });
+});
+
 const listProduct = (products) => {
   const container = document.getElementById("products");
   for (let i = 0; i < products.length; i++) {
