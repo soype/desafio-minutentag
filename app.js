@@ -38,7 +38,10 @@ const listProduct = (products) => {
     itemPrice.classList = "item-price";
     const addButton = document.createElement("div");
     addButton.classList = "add-button";
-    addButton.textContent = "+"
+    const span1  = document.createElement("span");
+    const span2  = document.createElement("span");
+    addButton.appendChild(span1);
+    addButton.appendChild(span2);
 
 
     // Changing data
