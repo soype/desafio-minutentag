@@ -1,20 +1,22 @@
 import products from "../products.js";
 import stockPrice from "../stock-price.js";
 
+
+////////////////////////////////////////////////////////
 // Mini router for the product single view
-
-
+////////////////////////////////////////////////////////
 // Prevent default and change url while keeping history
 const route = event => {
   event = event || window.event;
   event.preventDefault();
+  event.stopPropagation();
   window.history.pushState({}, "", event.target.href);
   handleLocation();
 }
 
 
 const createRoutes = () => {
-  let routes = { 404: 'pages/404.html', "/": "pages/index.html"};
+  let routes = { 404: 'pages/404.html', "/": "index.html"};
   
   for (let i = 0; i < products.length; i++) {
     // Format brand name to avoid spaces
@@ -26,12 +28,50 @@ const createRoutes = () => {
 
 const routes = createRoutes();
 
+
+
+// Helper function to provide dynamic content
+const extractId = (path) => {
+  const start = path.indexOf("/") + 1;
+  const end = path.indexOf("-");
+  if (start >= 0 && end >= 0) {
+    return path.substring(start, end);
+  } else {
+    return null;
+  }
+};
+
+// Renders a single item in the single item page
+const renderSingle = id => {
+  console.log(id)
+  for(let i = 0; i < products.length; i++){
+    if(products[i].id == id){
+
+      // Add image
+      const img = document.createElement("img");
+      img.src = products[i].image;
+      document.getElementById('main-image').appendChild(img);
+      
+      // Add description
+
+    }
+  }
+}
+
 const handleLocation = async () => {
   const path = window.location.pathname;
   const route = routes[path] || routes[404];
   const html = await fetch(route).then((data) => data.text());
   document.getElementById("app").innerHTML = html;
-}
+  if (route == "/"){
+    listProducts(products);
+  }
+  if (route != routes[404]) {
+    let id = extractId(path); 
+    renderSingle(id);
+  }
+};
+
 
 window.onpopstate = handleLocation;
 window.route = route;
@@ -40,9 +80,10 @@ window.route = route;
 
 
 
-// handleLocation();
-
+////////////////////////////////////////////////////////
 // Category button animation
+////////////////////////////////////////////////////////
+
 const categoryButtons = document.querySelectorAll('.category-button');
 
 // Add an event listener to each
@@ -57,6 +98,11 @@ categoryButtons.forEach(button => {
     button.classList.add("category-button-selected"); 
   });
 });
+
+
+////////////////////////////////////////////////////////
+// List prouducts in index.html
+////////////////////////////////////////////////////////
 
 const listProducts = (products) => {
   const container = document.getElementById("products");
@@ -147,6 +193,11 @@ const listProducts = (products) => {
   }
 };
 
-
 // Call the function to render the products
-listProducts(products);
+if (window.location.pathname == "/"){
+  listProducts(products);
+}
+
+
+
+
