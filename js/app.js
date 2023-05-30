@@ -44,15 +44,31 @@ const extractId = (path) => {
 // Renders a single item in the single item page
 const renderSingle = id => {
   console.log(id)
+  const container = document.getElementById('container');
   for(let i = 0; i < products.length; i++){
     if(products[i].id == id){
 
       // Add image
       const img = document.createElement("img");
+      img.classList = "item-img";
       img.src = products[i].image;
       document.getElementById('main-image').appendChild(img);
       
       // Add description
+      // Header with title and price
+      const contHeader = document.createElement('div');
+      contHeader.classList = "container-header";
+      const title = document.createElement('h1');
+      const price = document.createElement('div');
+      // Bring the elements together
+      price.classList = "detail-price";
+      contHeader.appendChild(title);
+      contHeader.appendChild(price);
+
+
+      
+      // Add elements to container
+      container.appendChild(contHeader);
 
     }
   }
