@@ -263,4 +263,33 @@ p, h1, h2, h3, h4 {
 .menu div:hover svg {
   fill: #ff9f24;
   box-shadow: -1px 1px 17px 10px rgba(255, 159, 36, 0.23);
+}
+
+.detail {
+  text-align: center;
+}
+
+.button-menu {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border-radius: 8px;
+}
+.button-menu span {
+  height: 2px;
+  width: 2px;
+  border-radius: 2px;
+  background-color: black;
+}
+
+.item-img {
+  height: 300px;
+}
+
+#container {
+  height: 300px;
+  width: 100%;
+  background-color: red;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
 }/*# sourceMappingURL=style.css.map */

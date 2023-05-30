@@ -14,19 +14,19 @@ const route = event => {
   handleLocation();
 }
 
-
 const createRoutes = () => {
-  let routes = { 404: 'pages/404.html', "/": "index.html"};
+  let routes = { 404: 'pages/404.html', "/": "index.html", "index.html" : "index.html"};
   
   for (let i = 0; i < products.length; i++) {
     // Format brand name to avoid spaces
     let brand = products[i].brand.replace(/\s/g, '');
-    routes[`/${products[i].id}-${brand}`] = `pages/${products[i].id}-${brand}.html`;
+    routes[`/${products[i].id}-${brand}`] = `pages/product-detail.html`;
   }
   return routes;
 }
 
 const routes = createRoutes();
+
 
 
 
@@ -44,9 +44,13 @@ const extractId = (path) => {
 // Renders a single item in the single item page
 const renderSingle = id => {
   console.log(id)
-  const container = document.getElementById('container');
+  
+  
   for(let i = 0; i < products.length; i++){
     if(products[i].id == id){
+      const stockData = stockPrice[products[i].skus[0].code];
+      const container = document.getElementById('container');
+      console.log(container);
 
       // Add image
       const img = document.createElement("img");
@@ -56,20 +60,74 @@ const renderSingle = id => {
       
       // Add description
       // Header with title and price
-      const contHeader = document.createElement('div');
+      const contHeader = document.createElement("div");
       contHeader.classList = "container-header";
-      const title = document.createElement('h1');
-      const price = document.createElement('div');
+      const title = document.createElement("h1");
+      title.textContent = products[i].brand;
+      const price = document.createElement("div");
+      price.textContent = stockData.price;
       // Bring the elements together
       price.classList = "detail-price";
       contHeader.appendChild(title);
       contHeader.appendChild(price);
 
+      // Origin and stock
+      const subData = document.createElement("div");
+      subData.classList = "sub-data";
+      subData.textContent = `Origin: ${products[i].origin} | Stock: ${stockData.stock}`
 
+      //Description
+      const desc = document.createElement("div");
+      desc.classList = 'description';
+      const descTitle = document.createElement('h3');
+      descTitle.textContent = "Description";
+      const info = document.createElement('p');
+      info.classList = "desc-info";
+      info.textContent = products[i].information;
+      // Bring the elements together
+      desc.appendChild(descTitle);
+      desc.appendChild(info);
+
+      // Size
+      const sizeContainer = document.createElement('div');
+      sizeContainer.classList = "size-container";
+      const sizeTitle = document.createElement('h3');
+      sizeTitle.textContent = "Size";
+      const sizeOptions = document.createElement('div');
+      sizeOptions.classList = "size-options";
+      // Iterate the different sizes for each product
+      for(let x=0; x < products[i].skus.length; x++){
+        const option = document.createElement('div');
+        option.classList = "option";
+        if(x===0){
+          option.classList.add('option-selected');
+        }
+        option.textContent = products[i].skus[x].name;
+        sizeOptions.appendChild(option);
+      }
+      // Bring the items together
+      sizeContainer.appendChild(sizeTitle);
+      sizeContainer.appendChild(sizeOptions);
+
+      // Cart container
+      const cartContainer = document.createElement('div');
+      cartContainer.classList = 'cart-container';
+      const cartButton = document.createElement('div');
+      cartButton.classList = "deatil-cart-button";
+      cartButton.textContent = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="6" r="4.25" stroke="#FF9F24" stroke-width="1.5"/><path d="M4.30623 9.59689C4.50953 7.97049 5.89208 6.75 7.53113 6.75H16.4689C18.1079 6.75 19.4905 7.97049 19.6938 9.59689L20.6938 17.5969C20.9362 19.5367 19.4237 21.25 17.4689 21.25H6.53113C4.57626 21.25 3.06375 19.5367 3.30623 17.5969L4.30623 9.59689Z" fill="white" stroke="#FF9F24" stroke-width="1.5"/><circle cx="9.75" cy="10.75" r="0.75" fill="#FF9F24"/><circle cx="13.75" cy="10.75" r="0.75" fill="#FF9F24"/></svg>`
+      const addToCart = document.createElement('button');
+      addToCart.classList = "detail-add-button";
+      addToCart.textContent = "Add to cart";
+      // Bring the items together
+      cartContainer.appendChild(cartButton);
+      cartContainer.appendChild(addToCart);
       
       // Add elements to container
       container.appendChild(contHeader);
-
+      container.appendChild(subData);
+      container.appendChild(desc);
+      container.appendChild(sizeContainer);
+      container.appendChild(addToCart);
     }
   }
 }
@@ -97,7 +155,7 @@ window.route = route;
 
 
 ////////////////////////////////////////////////////////
-// Category button animation
+// Button animations
 ////////////////////////////////////////////////////////
 
 const categoryButtons = document.querySelectorAll('.category-button');
@@ -114,6 +172,21 @@ categoryButtons.forEach(button => {
     button.classList.add("category-button-selected"); 
   });
 });
+
+const options = document.querySelectorAll('.option');
+// Add event listener if they exist:
+if(options){
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      //Remove background color from all
+      options.forEach(option => {
+        option.classList = "option";
+      })
+    
+    option.classList.add('option-selected');
+    })
+  })
+}
 
 
 ////////////////////////////////////////////////////////
