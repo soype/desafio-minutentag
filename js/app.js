@@ -9,6 +9,7 @@ import stockPrice from "../stock-price.js";
 const route = event => {
   event = event || window.event;
   event.preventDefault();
+  console.log(event)
   event.stopPropagation();
   window.history.pushState({}, "", event.target.href);
   handleLocation();
@@ -28,6 +29,27 @@ const createRoutes = () => {
 const routes = createRoutes();
 
 
+const handleLocation = async () => {
+  const path = window.location.pathname;
+  console.log(path);
+  const route = routes[path] || routes[404];
+  const html = await fetch(route).then((data) => data.text());
+  document.getElementById("app").innerHTML = html;
+  if (route == "/"){
+    listProducts(products);
+  }
+  if (route != routes[404]) {
+    let id = extractId(path); 
+    renderSingle(id);
+  }
+};
+
+
+window.onpopstate = handleLocation;
+window.route = route;
+if(window.location.pathname !== '/' ){
+  handleLocation();
+}
 
 
 // Helper function to provide dynamic content
@@ -131,24 +153,6 @@ const renderSingle = id => {
     }
   }
 }
-
-const handleLocation = async () => {
-  const path = window.location.pathname;
-  const route = routes[path] || routes[404];
-  const html = await fetch(route).then((data) => data.text());
-  document.getElementById("app").innerHTML = html;
-  if (route == "/"){
-    listProducts(products);
-  }
-  if (route != routes[404]) {
-    let id = extractId(path); 
-    renderSingle(id);
-  }
-};
-
-
-window.onpopstate = handleLocation;
-window.route = route;
 
 
 
