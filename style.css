@@ -29,6 +29,7 @@ p, h1, h2, h3, h4 {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  cursor: pointer;
 }
 
 .span-container {
@@ -45,6 +46,7 @@ p, h1, h2, h3, h4 {
   background-color: #323232;
   color: #323232;
   border-radius: 4px;
+  transition: all;
 }
 .span-container span:nth-child(2) {
   width: 10px;
@@ -155,23 +157,23 @@ p, h1, h2, h3, h4 {
 }
 
 .products {
-  margin: 24px 24px 0;
+  margin: 24px 24px 8vh;
 }
 
 .products-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
 
 .item {
   width: 135px;
-  background-color: red;
+  background-color: white;
   border-radius: 8px;
   margin: 8px 0 8px;
-  padding: 16px;
+  padding: 16px 16px 0;
+  text-align: center;
 }
 .item:nth-child(odd) {
   border-top-right-radius: 24px;
@@ -180,14 +182,26 @@ p, h1, h2, h3, h4 {
   border-top-left-radius: 24px;
 }
 .item img {
+  margin-top: 10px;
   max-width: 120px;
   max-height: 120px;
+  cursor: pointer;
+}
+
+.item-title {
+  all: unset;
+  cursor: pointer;
 }
 
 .item-menu {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: -16px;
+}
+
+.item-price {
+  font-weight: 500;
 }
 
 .add-button {
@@ -196,7 +210,6 @@ p, h1, h2, h3, h4 {
   border-bottom-right-radius: 8px;
   background-color: #ff9f24;
   margin-right: -16px;
-  margin-bottom: -16px;
   width: 40px;
   height: 40px;
   display: flex;
