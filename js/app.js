@@ -30,7 +30,11 @@ const createRoutes = () => {
   for (let i = 0; i < products.length; i++) {
     // Format brand name to avoid spaces
     let brand = products[i].brand.replace(/\s/g, "");
-    routes[`/${products[i].id}-${brand}`] = {template: `pages/product-detail.html`, title: brand, description: ""};
+    routes[`/${products[i].id}-${brand}`] = {
+      template: `pages/product-detail.html`,
+      title: brand,
+      description: "",
+    };
   }
   return routes;
 };
@@ -39,16 +43,17 @@ const routes = createRoutes();
 
 const handleLocation = async () => {
   let path = window.location.pathname;
-  if(path.length == 0){
+  if (path.length == 0) {
     path = "/";
-  };
+  }
 
   const route = routes[path] || routes[404];
   const html = await fetch(route.template).then((data) => data.text());
   document.getElementById("app").innerHTML = html;
   document.title = route.title;
-  document.querySelector('meta[name="description"]')
-  .setAttribute("content", route.description);
+  document
+    .querySelector('meta[name="description"]')
+    .setAttribute("content", route.description);
   if (route == "/") {
     listProducts(products);
   }
@@ -84,13 +89,48 @@ const expandText = () => {
   }
 };
 
-//////////////////////////////////////////////////
-// Renders a single item in the single item page
-//////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+// Button animations
+////////////////////////////////////////////////////////
+
+const categoryButtons = document.querySelectorAll(".category-button");
+
+// Add an event listener to each
+categoryButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    // Remove background color from all
+    categoryButtons.forEach((btn) => {
+      btn.classList = "category-button";
+    });
+
+    // Set background color for the clicked button
+    button.classList.add("category-button-selected");
+  });
+});
+
+const options = document.querySelectorAll(".option");
+// Add event listener if they exist:
+if (options) {
+  options.forEach((option) => {
+    option.addEventListener("click", () => {
+      //Remove background color from all
+      options.forEach((option) => {
+        option.classList = "option";
+      });
+
+      option.classList.add("option-selected");
+    });
+  });
+}
+
+
+////////////////////////////////////////////////////////
+// Render a single item in the single item page
+////////////////////////////////////////////////////////
 const renderSingle = (id) => {
   for (let i = 0; i < products.length; i++) {
+    let stockData = stockPrice[products[i].skus[0].code];
     if (products[i].id == id) {
-      const stockData = stockPrice[products[i].skus[0].code];
       const container = document.getElementById("container");
 
       // Add image
@@ -107,7 +147,9 @@ const renderSingle = (id) => {
       title.textContent = products[i].brand;
       const price = document.createElement("div");
       // Set initial price
-      price.textContent = `$ ${(stockPrice[products[i].skus[0].code].price / 100).toFixed(2)}`;
+      price.textContent = `$ ${(
+        stockPrice[products[i].skus[0].code].price / 100
+      ).toFixed(2)}`;
 
       // Bring the elements together
       price.classList = "detail-price";
@@ -207,47 +249,27 @@ const renderSingle = (id) => {
               price.textContent = `$ ${(
                 stockPrice[products[i].skus[x].code].price / 100
               ).toFixed(2)}`;
+              subData.textContent = `Origin: ${products[i].origin} | Stock: ${stockPrice[products[i].skus[x].code].stock}`;
             }
           }
         });
       });
+      // Update stock every 5 seconds
+      setInterval(() => {
+        let selection = document.querySelectorAll(".option-selected")[0];
+        const fetchData = () => {
+          for (let x = 0; x < products[i].skus.length; x++) {
+            if (selection.id == products[i].skus[x].code) {
+          return stockPrice[products[i].skus[x].code];
+        }}};
+        stockData = fetchData();
+        console.log("Updated stock");
+        subData.textContent = `Origin: ${products[i].origin} | Stock: ${stockData.stock}`;
+      }, 5000);
     }
   }
 };
 
-////////////////////////////////////////////////////////
-// Button animations
-////////////////////////////////////////////////////////
-
-const categoryButtons = document.querySelectorAll(".category-button");
-
-// Add an event listener to each
-categoryButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    // Remove background color from all
-    categoryButtons.forEach((btn) => {
-      btn.classList = "category-button";
-    });
-
-    // Set background color for the clicked button
-    button.classList.add("category-button-selected");
-  });
-});
-
-const options = document.querySelectorAll(".option");
-// Add event listener if they exist:
-if (options) {
-  options.forEach((option) => {
-    option.addEventListener("click", () => {
-      //Remove background color from all
-      options.forEach((option) => {
-        option.classList = "option";
-      });
-
-      option.classList.add("option-selected");
-    });
-  });
-}
 
 ////////////////////////////////////////////////////////
 // List prouducts in index.html

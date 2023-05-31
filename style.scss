@@ -500,7 +500,7 @@ h4 {
       width: 3rem;
     }
   }
-  #container{
+  .detail-container{
     position: absolute;
     bottom: 0;
   }
@@ -581,7 +581,6 @@ h4 {
   .detail{
     display: flex;
     flex-direction: row;
-    // height: 100vh;
   }
   .detail-header{
     position: fixed;
@@ -595,6 +594,9 @@ h4 {
     .button-menu{
       display: none;
     }
+    .back{
+      margin-left: 1rem;
+    }
   }
   #main-image{
     display: flex;
@@ -605,7 +607,7 @@ h4 {
       height: 16rem;
     }
   }
-  #container{
+  .detail-container{
     position: relative;
     display: flex;
     flex-direction: column;
@@ -619,6 +621,12 @@ h4 {
   }
   .option{
     font-size: 16px;
+  }
+}
+
+@media all and (min-height: 720px) and (min-width: 1080px){
+  .detail-container{
+    height: 100vh;
   }
 }
 
