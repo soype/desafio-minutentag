@@ -5,6 +5,72 @@ import stockPrice from "../stock-price.js";
 // Mini router for the product single view
 ////////////////////////////////////////////////////////
 // Prevent default and change url while keeping history
+// const route = (event) => {
+//   event = event || window.event;
+//   event.preventDefault();
+//   event.stopPropagation();
+//   window.history.pushState({}, "", event.target.href);
+//   handleLocation();
+// };
+
+// const createRoutes = () => {
+//   let routes = {
+//     404: {
+//       template: "pages/404.html",
+//       title: "Not found",
+//       description: "Not found",
+//     },
+//     "/": {
+//       template: "pages/index.html",
+//       title: "Minutentag",
+//       description: "Drinks straight to you!",
+//     },
+//     "index.html":{
+//       template: "pages/index.html",
+//       title: "Minutentag",
+//       description: "Drinks straight to you!",
+//     }
+//   };
+
+//   for (let i = 0; i < products.length; i++) {
+//     // Format brand name to avoid spaces
+//     let brand = products[i].brand.replace(/\s/g, "");
+//     routes[`/${products[i].id}-${brand}`] = {
+//       template: `pages/product-detail.html`,
+//       title: brand,
+//       description: "",
+//     };
+//   }
+//   return routes;
+// };
+
+// const routes = createRoutes();
+
+// const handleLocation = async () => {
+//   let path = window.location.pathname;
+//   if (path.length == 0) {
+//     path = "/";
+//   }
+
+//   const route = routes[path] || routes[404];
+//   const html = await fetch(route.template).then((data) => data.text());
+//   document.getElementById("app").innerHTML = html;
+//   document.title = route.title;
+//   document
+//     .querySelector('meta[name="description"]')
+//     .setAttribute("content", route.description);
+//   if (route == "/") {
+//     listProducts(products);
+//   }
+//   if (route != routes[404]) {
+//     let id = extractId(path);
+//     renderSingle(id);
+//   }
+// };
+
+// window.onpopstate = handleLocation;
+// window.route = route;
+
 const route = (event) => {
   event = event || window.event;
   event.preventDefault();
@@ -15,27 +81,28 @@ const route = (event) => {
 
 const createRoutes = () => {
   let routes = {
-    404: {
-      template: "pages/404.html",
-      title: "Not found",
-      description: "Not found",
-    },
     "/": {
       template: "pages/index.html",
       title: "Minutentag",
       description: "Drinks straight to you!",
     },
+    "404": {
+      template: "pages/404.html",
+      title: "Not found",
+      description: "Not found",
+    },
   };
 
   for (let i = 0; i < products.length; i++) {
-    // Format brand name to avoid spaces
     let brand = products[i].brand.replace(/\s/g, "");
-    routes[`/${products[i].id}-${brand}`] = {
+    let id = products[i].id;
+    routes[`/${id}-${brand}`] = {
       template: `pages/product-detail.html`,
       title: brand,
       description: "",
     };
   }
+
   return routes;
 };
 
@@ -43,21 +110,23 @@ const routes = createRoutes();
 
 const handleLocation = async () => {
   let path = window.location.pathname;
-  if (path.length == 0) {
+  if (path.length === 0) {
     path = "/";
   }
 
-  const route = routes[path] || routes[404];
+  const route = routes[path] || routes["404"];
   const html = await fetch(route.template).then((data) => data.text());
   document.getElementById("app").innerHTML = html;
   document.title = route.title;
   document
     .querySelector('meta[name="description"]')
     .setAttribute("content", route.description);
-  if (route == "/") {
+
+  if (route === routes["/"]) {
     listProducts(products);
   }
-  if (route != routes[404]) {
+
+  if (route !== routes["404"]) {
     let id = extractId(path);
     renderSingle(id);
   }
