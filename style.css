@@ -311,8 +311,6 @@ h4 {
   background-color: white;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
-  position: absolute;
-  bottom: 0;
   transition: all 0.3s;
 }
 
