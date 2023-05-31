@@ -314,14 +314,19 @@ h4 {
 }
 
 .button-menu {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
   height: 40px;
   width: 40px;
   background-color: white;
   border-radius: 8px;
   span {
-    height: 2px;
-    width: 2px;
-    border-radius: 2px;
+    height: 4px;
+    width: 4px;
+    border-radius: 10px;
     background-color: black;
   }
 }
@@ -331,7 +336,18 @@ h4 {
 ///////////////////////////////////////
 
 .item-img {
-  height: 240px;
+  height: 300px;
+}
+
+.detail-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  h2{
+    font-size: 24px;
+  }
 }
 
 ///////////////////////////////////////
@@ -343,27 +359,32 @@ h4 {
   background-color: white;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
+  position: absolute;
+  bottom: 0;
+  transition: all .3s;
 }
+
+
 
 .container-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 32px 16px 0;
+  padding: 40px 16px 0;
   h1 {
-    font-size: 24px;
+    font-size: 28px;
   }
 }
 
 .detail-price {
-  font-size: 24px;
+  font-size: 28px;
   color: $orange;
   font-weight: 700;
 }
 
 .sub-data {
-  padding: 4px 16px 0;
-  font-size: 12px;
+  padding: 4px 16px 8px;
+  font-size: 16px;
   color: $font-light;
   text-align: left;
 }
@@ -372,13 +393,14 @@ h4 {
   padding: 16px;
   text-align: left;
   h3 {
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
 .desc-info {
   padding-top: 8px;
-  font-size: 12px;
+  font-size: 16px;
+  line-height: 28px;
   color: $font-light;
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -395,7 +417,7 @@ h4 {
 .read-more {
   color: $orange;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -403,7 +425,7 @@ h4 {
   padding: 8px 16px 24px;
   h3{
     text-align: left;
-    font-size: 16px;
+    font-size: 20px;
     padding-bottom: 8px;
   }
 }
@@ -427,4 +449,24 @@ h4 {
 .option-selected{
   border: solid 1px $orange;
   color: $orange;
+}
+
+.cart-container{
+  padding: 8px 16px 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-add-button{
+  background-color: $orange;
+  color: white;
+  width: 75%;
+  height: 54px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
 }
