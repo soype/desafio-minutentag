@@ -8,6 +8,8 @@ app.use(express.static('public'));
 app.get('/:id-:brand', (req, res) => {
   const id = req.params.id;
   const brand = req.params.brand;
+  console.log(id)
+  console.log(brand)
 
   const templatePath = path.resolve(__dirname, 'public', 'pages', 'product-detail.html');
   res.sendFile(templatePath);

@@ -323,7 +323,7 @@ const renderSingle = (id) => {
           }
         });
       });
-      // Update stock every 5 seconds
+      // Update stock every 5 seconds 
       setInterval(() => {
         let selection = document.querySelectorAll(".option-selected")[0];
         const fetchData = () => {
@@ -432,4 +432,9 @@ const listProducts = (products) => {
 // Call the function to render the products
 if (window.location.pathname == "/") {
   listProducts(products);
+}
+
+if(window.location.pathname != 404 || window.location.pathname != "/"){
+  let id = extractId(window.location.pathname);
+  renderSingle(id);  
 }
