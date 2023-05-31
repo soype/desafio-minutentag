@@ -68,7 +68,7 @@ h4 {
 }
 
 .greeting-name {
-  color: #646464;
+  color: #969696;
   font-size: 1rem;
 }
 
@@ -102,25 +102,26 @@ h4 {
   width: 100%;
   outline: none;
   color: #646464;
+  font-size: 1rem;
 }
 .search input::-moz-placeholder {
-  color: #646464;
+  color: #969696;
 }
 .search input::placeholder {
-  color: #646464;
+  color: #969696;
 }
 
 .categories {
   margin: 0 1.5rem;
 }
 
-.subtitle-container {
+.category-subtitle {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
 }
-.subtitle-container h2 {
+.category-subtitle h2 {
   font-size: 1.25rem;
 }
 
@@ -139,8 +140,8 @@ h4 {
 
 .category-button {
   background-color: white;
-  height: 48px;
-  width: 100px;
+  height: 3rem;
+  width: 6.25rem;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -152,16 +153,26 @@ h4 {
   transition: all 0.3s;
 }
 .category-button:nth-child(1) {
-  width: 60px;
+  width: 3.75rem;
 }
 
 .category-button-selected {
-  width: 120px;
+  width: 7.5rem;
   background-color: #ff9f24;
 }
 
 .products {
-  margin: 1.5rem 1.5rem 8vh;
+  margin: 1.5rem 0 9vh;
+}
+
+.products-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1.5rem 1.5rem;
+}
+.products-subtitle h2 {
+  font-size: 1.25rem;
 }
 
 .products-container {
@@ -172,12 +183,13 @@ h4 {
 }
 
 .item {
-  width: 135px;
+  width: 8.3rem;
   background-color: white;
   border-radius: 0.5rem;
   margin: 0.5rem 0.5rem;
   padding: 1rem 1rem 0;
   text-align: center;
+  justify-self: center;
 }
 .item:nth-child(odd) {
   border-top-right-radius: 1.5rem;
@@ -187,8 +199,8 @@ h4 {
 }
 .item img {
   margin-top: 10px;
-  max-width: 120px;
-  max-height: 120px;
+  max-width: 7.5rem;
+  max-height: 7.5rem;
   cursor: pointer;
 }
 
@@ -333,7 +345,7 @@ h4 {
 .sub-data {
   padding: 4px 1rem 0.5rem;
   font-size: 1rem;
-  color: #646464;
+  color: #969696;
   text-align: left;
 }
 
@@ -349,7 +361,7 @@ h4 {
   padding-top: 0.5rem;
   font-size: 1rem;
   line-height: 1.75rem;
-  color: #646464;
+  color: #969696;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -386,11 +398,11 @@ h4 {
 }
 
 .option {
-  border: solid 1px #646464;
+  border: solid 1px #969696;
   font-size: 12px;
   padding: 0.5rem 12px 0.5rem;
   border-radius: 1.5rem;
-  color: #646464;
+  color: #969696;
   cursor: pointer;
 }
 
@@ -417,4 +429,33 @@ h4 {
   cursor: pointer;
   font-weight: 500;
   font-size: 1rem;
+}
+
+@media all and (min-width: 600px) {
+  html {
+    font-size: 24px;
+  }
+  .menu-toggle {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  .profile-pic img {
+    height: 3rem;
+    width: 3rem;
+  }
+  #container {
+    position: absolute;
+    bottom: 0;
+  }
+  .products {
+    margin: 1.5rem 0 10vh;
+  }
+  .item {
+    width: 12rem;
+    justify-self: center;
+  }
+  .back svg {
+    height: 60px !important;
+    width: 60px !important;
+  }
 }/*# sourceMappingURL=style.css.map */
