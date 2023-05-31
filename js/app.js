@@ -15,15 +15,22 @@ const route = (event) => {
 
 const createRoutes = () => {
   let routes = {
-    404: "pages/404.html",
-    "/": "index.html",
-    "index.html": "index.html",
+    404: {
+      template: "pages/404.html",
+      title: "Not found",
+      description: "Not found",
+    },
+    "/": {
+      template: "pages/index.html",
+      title: "Minutentag",
+      description: "Drinks straight to you!",
+    },
   };
 
   for (let i = 0; i < products.length; i++) {
     // Format brand name to avoid spaces
     let brand = products[i].brand.replace(/\s/g, "");
-    routes[`/${products[i].id}-${brand}`] = `pages/product-detail.html`;
+    routes[`/${products[i].id}-${brand}`] = {template: `pages/product-detail.html`, title: brand, description: ""};
   }
   return routes;
 };
@@ -31,10 +38,17 @@ const createRoutes = () => {
 const routes = createRoutes();
 
 const handleLocation = async () => {
-  const path = window.location.pathname;
+  let path = window.location.pathname;
+  if(path.length == 0){
+    path = "/";
+  };
+
   const route = routes[path] || routes[404];
-  const html = await fetch(route).then((data) => data.text());
+  const html = await fetch(route.template).then((data) => data.text());
   document.getElementById("app").innerHTML = html;
+  document.title = route.title;
+  document.querySelector('meta[name="description"]')
+  .setAttribute("content", route.description);
   if (route == "/") {
     listProducts(products);
   }
@@ -46,9 +60,6 @@ const handleLocation = async () => {
 
 window.onpopstate = handleLocation;
 window.route = route;
-if (window.location.pathname !== "/") {
-  handleLocation();
-}
 
 // Helper functions to provide dynamic content
 const extractId = (path) => {
