@@ -19,14 +19,14 @@ h4 {
 .header {
   display: flex;
   flex-direction: row;
-  margin: 40px 24px 32px;
+  margin: 2.25rem 1.5rem 2rem;
   justify-content: space-between;
   align-items: center;
 }
 
 .menu-toggle {
-  height: 40px;
-  width: 40px;
+  height: 2.25rem;
+  width: 2.25rem;
   background-color: white;
   border-radius: 10px;
   display: flex;
@@ -41,11 +41,11 @@ h4 {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height: 20px;
+  height: 1.25rem;
 }
 .span-container span {
   display: block;
-  width: 16px;
+  width: 1rem;
   height: 2px;
   background-color: #323232;
   color: #323232;
@@ -60,31 +60,31 @@ h4 {
 .profile-pic img {
   width: 50px;
   height: 50px;
-  border-radius: 40px;
+  border-radius: 2.25rem;
 }
 
 .greeting {
-  margin: 0 24px 0;
+  margin: 0 1.5rem 0;
 }
 
 .greeting-name {
   color: #646464;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .greeting-title {
   margin-top: 5px;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .search {
   background-color: white;
-  margin: 32px 24px 32px;
-  height: 24px;
+  margin: 2rem 1.5rem 2rem;
+  height: 1.5rem;
   display: flex;
   align-items: center;
-  padding: 12px 16px 12px;
-  border-radius: 8px;
+  padding: 12px 1rem 12px;
+  border-radius: 0.5rem;
 }
 .search svg {
   stroke: #646464;
@@ -97,7 +97,7 @@ h4 {
 }
 .search input {
   border: none;
-  margin-left: 8px;
+  margin-left: 0.5rem;
   height: 100%;
   width: 100%;
   outline: none;
@@ -111,17 +111,17 @@ h4 {
 }
 
 .categories {
-  margin: 0 24px;
+  margin: 0 1.5rem;
 }
 
 .subtitle-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 .subtitle-container h2 {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .see-all {
@@ -142,10 +142,10 @@ h4 {
   height: 48px;
   width: 100px;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   cursor: pointer;
   color: #323232;
-  font-size: 16px;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,7 +161,7 @@ h4 {
 }
 
 .products {
-  margin: 24px 24px 8vh;
+  margin: 1.5rem 1.5rem 8vh;
 }
 
 .products-container {
@@ -174,16 +174,16 @@ h4 {
 .item {
   width: 135px;
   background-color: white;
-  border-radius: 8px;
-  margin: 8px 0 8px;
-  padding: 16px 16px 0;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0.5rem;
+  padding: 1rem 1rem 0;
   text-align: center;
 }
 .item:nth-child(odd) {
-  border-top-right-radius: 24px;
+  border-top-right-radius: 1.5rem;
 }
 .item:nth-child(even) {
-  border-top-left-radius: 24px;
+  border-top-left-radius: 1.5rem;
 }
 .item img {
   margin-top: 10px;
@@ -201,7 +201,7 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: -16px;
+  padding-bottom: -1rem;
 }
 
 .item-price {
@@ -210,12 +210,12 @@ h4 {
 
 .add-button {
   position: relative;
-  border-top-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   background-color: #ff9f24;
-  margin-right: -16px;
-  width: 40px;
-  height: 40px;
+  margin-right: -1rem;
+  width: 2.25rem;
+  height: 2.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -279,10 +279,10 @@ h4 {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  height: 40px;
-  width: 40px;
+  height: 2.25rem;
+  width: 2.25rem;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 .button-menu span {
   height: 4px;
@@ -300,17 +300,17 @@ h4 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
+  padding: 1rem;
 }
 .detail-header h2 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 #container {
   width: 100%;
   background-color: white;
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
   transition: all 0.3s;
 }
 
@@ -318,37 +318,37 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 16px 0;
+  padding: 2.25rem 1rem 0;
 }
 .container-header h1 {
-  font-size: 28px;
+  font-size: 1.75rem;
 }
 
 .detail-price {
-  font-size: 28px;
+  font-size: 1.75rem;
   color: #ff9f24;
   font-weight: 700;
 }
 
 .sub-data {
-  padding: 4px 16px 8px;
-  font-size: 16px;
+  padding: 4px 1rem 0.5rem;
+  font-size: 1rem;
   color: #646464;
   text-align: left;
 }
 
 .description {
-  padding: 16px;
+  padding: 1rem;
   text-align: left;
 }
 .description h3 {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .desc-info {
-  padding-top: 8px;
-  font-size: 16px;
-  line-height: 28px;
+  padding-top: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.75rem;
   color: #646464;
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -365,17 +365,17 @@ h4 {
 .read-more {
   color: #ff9f24;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 .size-container {
-  padding: 8px 16px 24px;
+  padding: 0.5rem 1rem 1.5rem;
 }
 .size-container h3 {
   text-align: left;
-  font-size: 20px;
-  padding-bottom: 8px;
+  font-size: 1.25rem;
+  padding-bottom: 0.5rem;
 }
 
 .size-options {
@@ -388,8 +388,8 @@ h4 {
 .option {
   border: solid 1px #646464;
   font-size: 12px;
-  padding: 8px 12px 8px;
-  border-radius: 24px;
+  padding: 0.5rem 12px 0.5rem;
+  border-radius: 1.5rem;
   color: #646464;
   cursor: pointer;
 }
@@ -400,7 +400,7 @@ h4 {
 }
 
 .cart-container {
-  padding: 8px 16px 16px;
+  padding: 0.5rem 1rem 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -416,5 +416,5 @@ h4 {
   border-radius: 12px;
   cursor: pointer;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1rem;
 }/*# sourceMappingURL=style.css.map */
