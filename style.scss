@@ -221,6 +221,8 @@ h4 {
   &:nth-child(even) {
     border-top-left-radius: 1.5rem;
   }
+  .image-container{
+  }
   img {
     margin-top: 10px;
     max-width:7.5rem;
@@ -612,5 +614,17 @@ h4 {
   .option{
     font-size: 16px;
   }
+}
 
+@media all and (min-width: 1500px) {
+  .products-container{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+@media all and (min-width: 2100px) {
+  .products-container{
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

@@ -256,6 +256,7 @@ const listProducts = (products) => {
     // Image with hiperlink to the specific product
     const imgContainer = document.createElement("div");
     imgContainer.classList = "img-container";
+    imgContainer.href = `/${products[i].id}-${brand}`;
     const img = document.createElement("img");
     img.src = "." + products[i].image;
     img.href = `/${products[i].id}-${brand}`;

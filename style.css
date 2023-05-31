@@ -547,4 +547,14 @@ h4 {
   .option {
     font-size: 16px;
   }
+}
+@media all and (min-width: 1500px) {
+  .products-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media all and (min-width: 2100px) {
+  .products-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }/*# sourceMappingURL=style.css.map */
