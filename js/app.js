@@ -85,7 +85,7 @@ const renderSingle = (id) => {
       // Add image
       const img = document.createElement("img");
       img.classList = "item-img";
-      img.src = products[i].image;
+      img.src = `/icons/${products[i].brand}.png`;
       document.getElementById("main-image").appendChild(img);
 
       // Add description
